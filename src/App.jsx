@@ -1,40 +1,34 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './components/Header';
-import Intro from './components/Intro';
-import About from './components/About';
-import Expertise from './components/Expertise';
-import Footer from './components/Footer';
-import CTA from './components/CTA';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import Home from './components/Home';
+import About from './components/About';
+import Works from './components/Works';
+import Certificates from './components/Certificates';
+import Contact from './components/Contact';
+import Navbar from './components/Navbar'; // Make sure to include Navbar here
+import './App.css';
 
 const App = () => {
   return (
     <Router>
-      <div id="page" className="s-pagewrap ss-home">
-        <Header />
-        <main id="content" className="s-content">
-          <Routes>
-            <Route path="/journal" element={<CTA  />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Expertise />} />
-            <Route path="/blog" element={<Intro />} />
-            <Route path="/contact" element={<Footer />} />
-            
-          </Routes>
-          <Intro />
-          
-          <About />
-          
-            <Expertise />
-            </main>
-            
-    
+      <div className=" navi bg-gray-900 ">
+        {/* Navbar on the left */}
+        <div className=" bg-gray-900 nwidth h-full">
+                <Navbar />
+            </div>
         
-          <CTA />
-          <Footer />
+        {/* Content on the right */}
+        <div className="bg-gray-900 w-full p-10">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/works" element={<Works />} />
+            <Route path="/certificates" element={<Certificates />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
         </div>
-      
+      </div>
     </Router>
   );
 };
