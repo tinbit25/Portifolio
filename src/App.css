@@ -1,15 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Playwrite+CU:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Matemasie&display=swap');
 
-
-body {
-  /* background-color: #1a1a1a; */
-  color: #fff;
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+.playpen-sans {
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  
+  font-style: normal;
 }
 
+.zilla-slab-light {
+  font-family: "Zilla Slab", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+.gowun-batang-regular {
+  font-family: "Gowun Batang", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.matemasie-regular {
+  font-family: "Matemasie", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.satisfy-regular {
+  font-family: "Satisfy", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+.playwrite-cu-unique {
+  font-family: 'Playwrite CU', cursive;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.fascinate-inline-regular {
+  font-family: 'Fascinate Inline', system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.navi {
+  height: 100vh; /* Make sure the navbar container takes full height */
+}
 .nav-link {
-  color: #f5a623;
-  text-decoration: none;
-  font-size: 1.25rem;
-  margin: 0 1rem;
+  margin: 0;
+    padding: 0.5rem 0; /* Adjust for desired spacing */
+    color: #f5a623;
+    text-decoration: none;
+    font-size: 1.25rem;
 }
 
 .nav-link:hover {
@@ -20,24 +70,72 @@ body {
   font-family: 'Cursive';
   font-size: 2rem;
   color: #f5a623;
+  
 }
 
 .myimg{
   width:300px;
 }
-.navi{
-  display: flex;
-  flex-direction: row;
-}
-.nwidth{
-  width: 200px;
+/* App.css */
 
+.navi {
+    display: flex;
+    flex-direction: column; 
+    height: 100vh;
+    
+    justify-content: flex-start; /* Adjust this if needed */
+    align-items: center; /* Stack on small screens */
 }
 
-.home{
-  display: flex;
- justify-content: space-between;
+.nwidth {
+    width: 250px; /* Fixed width for the navbar */
 }
+
+@media (min-width: 768px) {
+  .navi {
+    display: flex;
+    flex-direction: column; 
+}
+
+.nwidth {
+    width: 250px; 
+    display: flex;
+    flex-direction: column; 
+    
+}
+
+.bg-gray-900 {
+    background-color: #1a1a1a; /* Ensure consistent background */
+}
+
+    .nav-link {
+        padding: 10px;
+    }
+}
+
+
+
+.home {
+    display: flex;
+    flex-direction: column; /* Stack vertically on small screens */
+}
+
+.note {
+    margin-bottom: 20px; /* Space below the note */
+}
+
+@media (min-width: 768px) {
+    .home {
+        flex-direction: row; /* Align items in a row on larger screens */
+    }
+
+    .flex-1 {
+        flex: 1; /* Allow children to grow and take equal space */
+        padding: 10px; /* Add some padding */
+    }
+}
+
+
 .myimg {
   width: 500px;
 }
@@ -135,4 +233,34 @@ body {
   width: 100%; /* Ensure the image takes full width */
   height: auto;
   border-radius: 5px;
+}
+/* Add this to your CSS file */
+.animate-slide-in {
+  animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-out {
+  animation: slideOut 0.5s forwards;
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(20px);
+    opacity: 0;
+  }
 }

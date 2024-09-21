@@ -6,20 +6,20 @@ import About from './components/About';
 import Works from './components/Works';
 import Certificates from './components/Certificates';
 import Contact from './components/Contact';
-import Navbar from './components/Navbar'; // Make sure to include Navbar here
+import Navbar from './components/Navbar';
 import './App.css';
 
 const App = () => {
   return (
     <Router>
-      <div className=" navi bg-gray-900 ">
+      <div className="navi bg-gray-900 flex flex-col md:flex-row">
         {/* Navbar on the left */}
-        <div className=" bg-gray-900 nwidth h-full">
-                <Navbar />
-            </div>
+        <div className="bg-gray-900 h-full md:h-auto">
+          <Navbar />
+        </div>
         
         {/* Content on the right */}
-        <div className="bg-gray-900 w-full p-10">
+        <div className="bg-gray-900 w-full p-5 md:p-10 flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
