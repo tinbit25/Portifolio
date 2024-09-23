@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ppicture from "../assets/images/mypic-removebg.png"; 
+// import cvFile from "../assets/docs/my_cv.pdf"; // Make sure to update the path to your CV
 
 const Home = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
@@ -25,10 +26,19 @@ const Home = () => {
             <div className="flex-1 mb-5 md:mb-0">
                 <div className={`note transition-all duration-700 ease-in-out transform ${noteLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
                     <h2 className="text-3xl md:text-5xl font-semibold mb-3 fascinate-inline-regular">Welcome to My Portfolio</h2>
-                    <p className="text-xl md:text-4xl gowun-batang-regular">
+                    <p className="text-xl mb-12 md:text-4xl gowun-batang-regular">
                         I'm a passionate web developer focused on creating impactful digital solutions.
                         With skills in both front-end and back-end development. Let's connect and explore together!
                     </p>
+                    
+                    {/* Download CV Button */}
+                    <a 
+                        href="resume/Tinbite (2).pdf"
+                        download 
+                        className=" cv mt-12 text-lg zilla-slab-light  inline-block bg-[#e67e22] bg-opacity-70 hover:bg-opacity-40 text-white font-bold py-3 px-5  transition duration-300"
+                    >
+                        Download CV
+                    </a>
                 </div>
             </div>
             <div className="flex-1 flex justify-center items-center">

@@ -13,9 +13,9 @@ const About = () => {
 
   return (
     <div 
-      className="relative bg-cover bg-center h-screen flex flex-col items-center justify-center" 
+      className="about relative h-screen flex flex-col items-center justify-center" 
     >
-      <div className="absolute inset-0 bg-black opacity-50" /> 
+      <div className="absolute inset-0 " /> 
       <div className="relative z-10 text-center p-4">
         <h2 className="section-title text-white text-4xl mb-4 slide-in">About Me</h2>
         
@@ -44,12 +44,43 @@ const About = () => {
         <blockquote className="text-white italic mb-4 slide-in">
           "Great developers build solutions, but great developers build relationships."
         </blockquote>
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4 slide-in">
+          <div className="border-b border-gray-300 pb-2 mb-4 hover:bg-gray-700 transition duration-300">
+            <h3 className="text-white text-sm sm:text-lg mb-1">Email:</h3>
+            <p className="text-gray-300 text-xs sm:text-base">
+              <a href="mailto:tinbitelias25@gmail.com">tinbitelias25@gmail.com</a>
+            </p>
+          </div>
+          <div className="border-b border-gray-300 pb-2 mb-4 hover:bg-gray-700 transition duration-300">
+            <h3 className="text-white text-sm sm:text-lg mb-1">Phone:</h3>
+            <p className="text-gray-300 text-xs sm:text-base">+251-976330367</p>
+          </div>
 
-        {/* Smooth Slide Effect */}
-        <div className="mt-4 slide-in">
-          <a href="https://linkedin.com/in/your-profile" className="text-white mx-2">LinkedIn</a>
-          <a href="https://github.com/your-profile" className="text-white mx-2">GitHub</a>
+          <div className="border-b border-gray-300 pb-2 mb-4 hover:bg-gray-700 transition duration-300">
+            <h3 className="text-white text-sm sm:text-lg mb-1">City:</h3>
+            <p className="text-gray-300 text-xs sm:text-base">Debre Birhan, Ethiopia</p>
+          </div>
+
+          <div className="border-b border-gray-300 pb-2 mb-4 hover:bg-gray-700 transition duration-300">
+            <h3 className="text-white text-sm sm:text-lg mb-1">Language:</h3>
+            <p className="text-gray-300 text-xs sm:text-base">English, Amharic</p>
+          </div>
+
+          <div className="border-b border-gray-300 pb-2 mb-4 hover:bg-gray-700 transition duration-300">
+            <h3 className="text-white text-sm sm:text-lg mb-1">GitHub:</h3>
+            <p className="text-gray-300 text-xs sm:text-base">
+              <a href="https://github.com/Tinbit25" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+            </p>
+          </div>
+
+          <div className="border-b border-gray-300 pb-2 mb-4 hover:bg-gray-700 transition duration-300">
+            <h3 className="text-white text-sm sm:text-lg mb-1">LinkedIn:</h3>
+            <p className="text-gray-300 text-xs sm:text-base">
+              <a href="https://www.linkedin.com/in/tinbite-elias" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+            </p>
+          </div>
         </div>
+       
       </div>
 
       <style jsx>{`
