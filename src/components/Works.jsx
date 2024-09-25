@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import portifolio from '../assets/images/portifolio.png';
 import adoption from '../assets/images/Screenshot 2024-09-20 225055.png';
-import church from '../assets/images/church.png';
-import registration from '../assets/images/Untitled design (1).png';
+import church from '../assets/images/orthdox.png';
+// import registration from '../assets/images/Untitled design (4).png';
 
 const Works = ({theme} ) => {
   useEffect(() => {
@@ -45,7 +45,7 @@ const Works = ({theme} ) => {
         </div>
 
         <div className="project-card shadow-lg rounded-lg overflow-hidden opacity-0 transform translate-y-10">
-          <img src={registration} alt="Upcoming Project" className="project-image w-full h-48 object-cover" />
+          <img src=""alt="Upcoming Project" className="project-image w-full h-48 object-cover" />
           <div className="p-4">
             <h3 className="font-semibold text-lg text-red-300">Job Board for Tinas Tutoring Team</h3>
             <p className="text-white playpen-sans">Coming Soon: A job board platform connecting tutors and students, featuring job listings and applications.</p>

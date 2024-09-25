@@ -27,8 +27,7 @@ const Home = ({theme} ) => {
                 <div className={`note transition-all duration-700 ease-in-out transform ${noteLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
                     <h2 className="text-3xl md:text-5xl font-semibold mb-3 fascinate-inline-regular">Welcome to My Portfolio</h2>
                     <p className="text-xl mb-12 md:text-4xl gowun-batang-regular">
-                        I'm a passionate web developer focused on creating impactful digital solutions.
-                        With skills in both front-end and back-end development. Let's connect and explore together!
+                    I'm Tinbite Elias, a passionate web developer focused on creating impactful digital solutions. With skills in both front-end and back-end development.
                     </p>
                     
                     

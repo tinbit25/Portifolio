@@ -16,8 +16,8 @@ const About = ({theme} ) => {
       className={`${theme === 'light' ? 'text-gray-800' : 'text-white'}  about relative h-screen flex flex-col items-center justify-center`} 
     >
       <div className="absolute inset-0 " /> 
-      <div className="relative z-10 text-center p-4">
-        <h2 className={`${theme === 'light' ? 'text-gray-800' : 'text-white'} section-title  text-4xl mb-4 slide-in`}>About Me</h2>
+      <div className={`${theme === 'light' ? 'text-gray-800' : 'text-white'}relative z-10 text-center p-4`}>
+        <h2 className={` section-title  text-4xl mb-4 slide-in`}>About Me</h2>
         
 
         <p className=" text-lg mb-6 slide-in">
