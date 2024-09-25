@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaLinkedin, FaInstagram, FaGithub, FaTelegram } from 'react-icons/fa';
 
-const Contact = () => {
+const Contact = ({theme} ) => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({
@@ -45,7 +45,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact-page bg-gray-900 min-h-screen text-white flex flex-col items-center p-5 md:p-10">
+    <div className={`${theme === 'light' ? 'text-gray-800' : 'text-white'} contact-page  min-h-screen flex flex-col items-center p-5 md:p-10`}>
       <div className="slide">
       <h1 className="text-4xl md:text-5xl font-bold mb-6 mt-12 text-center">Let's Connect!</h1>
       <p className="text-lg mb-12 text-center max-w-md">
@@ -109,7 +109,7 @@ const Contact = () => {
       </div>
 
       <div className="flex flex-wrap justify-center mt-10 space-x-6 space-y-4 md:space-y-0">
-        <a href="https://www.linkedin.com/in/tinbite-elias" target="_blank" rel="noopener noreferrer" className="text-3xl mt-4 md:text-4xl hover:text-blue-500 transition duration-300">
+        <a href="https://www.linkedin.com/in/tinbite-elias" target="_blank" rel="noopener noreferrer" className="text-3xl mt-4 md:text-4xl md:mt-0 hover:text-blue-500 transition duration-300">
           <FaLinkedin />
         </a>
         <a href="https://github.com/Tinbit25" target="_blank" rel="noopener noreferrer" className="text-3xl md:text-4xl hover:text-gray-500 transition duration-300">
