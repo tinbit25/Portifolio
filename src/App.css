@@ -51,8 +51,8 @@ html, body {
 }
 
 :root {
-  --light-text-color: #4A4A4A; /* Light mode color */
-  --dark-text-color: #f5a623; /* Dark mode color */
+  --light-text-color: #4A4A4A; 
+  --dark-text-color: #f5a623; 
 }
 
 .light-theme {
@@ -178,11 +178,12 @@ body {
 
 .container {
   padding: 2rem;
-  
+  margin-top: 300px; 
   border-radius: 0.5rem;
 }
 
 .project-gallery {
+  
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -217,7 +218,7 @@ body {
   width: 100%; 
 }
 .certificate-container{
-  margin-top: 100px;
+  margin-top: 300px;
 }
 .certificate {
   background-color: #282828;
@@ -271,13 +272,13 @@ body {
 
 .contact-form{
   opacity: 0;
-  transform: translateY(-30px); /* Start slightly above */
-  transition: opacity 0.7s ease, transform 0.7s ease; /* Smooth transition */
+  transform: translateY(-30px); 
+  transition: opacity 0.7s ease, transform 0.7s ease; 
 }
 
 .contact-form.slide-in {
-  opacity: 1; /* Fully visible */
-  transform: translateY(0); /* Move to original position */
+  opacity: 1; 
+  transform: translateY(0); 
 }
 
 

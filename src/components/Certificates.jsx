@@ -12,7 +12,7 @@ const Certificates = ({theme}) => {
     certificates.forEach((certificate, index) => {
       setTimeout(() => {
         certificate.classList.add('show');
-      }, Math.floor(index / 2) * 600 + (index % 2) * 300); // Delay each pair's animation by 600ms, stagger within the pair by 300ms
+      }, Math.floor(index / 2) * 600 + (index % 2) * 300); 
     });
   }, []);
 

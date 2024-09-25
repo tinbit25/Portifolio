@@ -10,7 +10,7 @@ const Works = ({theme} ) => {
     projectCards.forEach((card, index) => {
       setTimeout(() => {
         card.classList.add('show');
-      }, index * 200); // Adjust delay (200ms) for each card's animation
+      }, index * 200); 
     });
   }, []);
 

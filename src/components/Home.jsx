@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ppicture from "../assets/images/mypic-removebg.png"; 
-// import cvFile from "../assets/docs/my_cv.pdf"; // Make sure to update the path to your CV
+
 
 const Home = ({theme} ) => {
     const [imageLoaded, setImageLoaded] = useState(false);

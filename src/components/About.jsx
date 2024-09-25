@@ -24,7 +24,6 @@ const About = ({theme} ) => {
         I am a full-stack web developer with expertise in React and Node.js, focused on creating dynamic and responsive web applications. Passionate about solving real-world challenges through technology, I'm eager to collaborate with others to develop innovative solutions. Let’s connect and build something impactful together!
         </p>
 
-        {/* Skill Icons */}
         <div className="flex justify-center space-x-8 mb-8 slide-in">
           <div className="text-center">
             <FaReact className="text-5xl text-blue-500 mb-2" />
