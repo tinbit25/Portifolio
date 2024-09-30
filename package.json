@@ -1,5 +1,5 @@
 {
-  "homepage": "https://github.com/tinbit25/Portifolio",
+"homepage": "https://tinbit25.github.io/Portifolio",
 
   "name": "new_portfolio",
   "private": true,
@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
-"deploy": "gh-pages -d build",
+  "deploy": "gh-pages -d dist",
 
     "dev": "vite",
     "build": "vite build",
