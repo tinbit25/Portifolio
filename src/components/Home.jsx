@@ -44,7 +44,7 @@ const Home = ({theme} ) => {
                 <img
                     src={ppicture}
                     alt="Home"
-                    className={`myimg h-auto transition-all duration-700 ease-in-out transform ${imageLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}
+                    className={`myimg h-auto transition-all duration-700  ease-in-out transform ${imageLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}
                     style={{ maxWidth: '100%', height: 'auto' }} 
                 />
             </div>

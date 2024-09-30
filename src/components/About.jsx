@@ -82,17 +82,7 @@ const About = ({theme} ) => {
        
       </div>
 
-      <style jsx>{`
-        .slide-in {
-          transform: translateY(20px);
-          opacity: 0;
-        }
-        .show {
-          transform: translateY(0);
-          opacity: 1;
-          transition: transform 0.6s ease-out, opacity 0.6s ease-out;
-        }
-      `}</style>
+      
     </div>
   );
 };

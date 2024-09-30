@@ -44,24 +44,11 @@ const Works = ({theme} ) => {
           </div>
         </div>
 
-        <div className="project-card shadow-lg rounded-lg overflow-hidden opacity-0 transform translate-y-10">
-          <img src=""alt="Upcoming Project" className="project-image w-full h-48 object-cover" />
-          <div className="p-4">
-            <h3 className="font-semibold text-lg text-red-300">Job Board for Tinas Tutoring Team</h3>
-            <p className="text-white playpen-sans">Coming Soon: A job board platform connecting tutors and students, featuring job listings and applications.</p>
-          </div>
-        </div>
+        
+       
       </div>
 
-      <style jsx>{`
-        .project-card {
-          transition: transform 0.6s ease-out, opacity 0.6s ease-out;
-        }
-        .project-card.show {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      `}</style>
+      
     </div>
   );
 };
