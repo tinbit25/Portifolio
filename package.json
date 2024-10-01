@@ -1,14 +1,12 @@
 {
-"homepage": "https://tinbit25.github.io/Portifolio",
-
+  "homepage": "https://tinbit25.github.io/Portifolio",
   "name": "new_portfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist",
-
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
