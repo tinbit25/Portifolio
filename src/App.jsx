@@ -24,7 +24,7 @@ const App = () => {
 
   return (
     <Router>
-      <div className={`app-container ${theme}`}>
+      <div className={`app-container  ${theme}`}>
         <button
           onClick={toggleTheme}
           className="toggle-button absolute right-12 top-4 bg-transparent text-2xl flex items-center transition-transform duration-200 hover:scale-105"

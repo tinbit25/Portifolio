@@ -4,23 +4,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faUser, faBriefcase, faCertificate, faEnvelope, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleNavbar = () => {
-    setIsOpen(!isOpen);
-  };
+ 
   
 
   return (
 
     <nav className={`nwidth h-full flex flex-col justify-between items-center p-4 `}>
       <div className="logo"> 
-        <Link to="/" className="text-5xl satisfy-regular font-logo">Tinbite</Link>
+        <Link to="/" className="hidden md:block text-5xl satisfy-regular font-logo">Tinbite</Link>
       </div>
-      <button onClick={toggleNavbar} className="md:hidden">
-        <FontAwesomeIcon icon={isOpen ? faTimes : faBars} className="text-yellow-400" size="2x" />
-      </button>
-      <ul className={`space-y-1 ${isOpen ? 'block' : 'hidden'} mt-12 md:flex flex-col md:space-y-0 md:space-x-4`}>
+    
+      <ul className={`mt-12 flex flex-row justify-between items-center md:flex-col`}>
         <li>
           <Link to="/" className="nav-link flex items-center ml-4">
             <FontAwesomeIcon icon={faHome} className="mr-2" /> Home
