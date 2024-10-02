@@ -61,7 +61,7 @@ const Contact = ({theme} ) => {
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4 p-5">
             {errorMessage && <p className="text-red-500 text-center">{errorMessage}</p>}
-            <div className="flex space-x-4"> 
+            <div className="flex flex-col md:flex-row space-x-4"> 
               <div className="flex-1">
                 <label className="text-lg font-semibold">Name</label>
                 <input 
@@ -70,7 +70,7 @@ const Contact = ({theme} ) => {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Your name"
-                  className="p-3 rounded-full border border-gray-700 focus:ring-2 focus:ring-blue-500 w-full" 
+                  className="ml-5 p-3 rounded-full border border-gray-700 focus:ring-2 focus:ring-blue-500 w-full" 
                   required
                 />
               </div>

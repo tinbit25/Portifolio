@@ -74,9 +74,7 @@ body.light {
 body {
   background-color: #111827; 
   color: #f5a623; 
-  .nav-link:hover {
-  color: #fff; 
-}
+ 
 }
 
 .navi.dark{
@@ -94,12 +92,38 @@ body {
 
 .nav-link {
   margin: 0;
+  transition: color 0.5s ease;
   padding: 10px; 
-  font-size: 15px;
+  font-size: 18px;
   justify-content: space-between;
   text-decoration: none;
   color: var(--text-color); 
 }
+.nav-link:hover {
+  color: #fff; 
+}
+.main-nav ul li a {
+  position: relative; 
+  /* display: inline-block;  */
+}
+
+.main-nav ul li a::after {
+  content: '';
+  position: absolute;  
+  bottom: 0;  
+  left: 0;    
+  width: 0;   
+  height: 5px;
+  background-color: rgb(141, 60, 28);  
+  transition: width 0.5s ease-in-out; 
+}
+
+.main-nav ul li a:hover::after {
+  width: 100%;  
+}
+
+
+
 
 .side{
   top:0;
@@ -122,10 +146,14 @@ body {
 
 
 .about{
-  margin-top: 100px;
+  margin-top: 150px;
 }
 
 @media (min-width: 768px) {
+ 
+  .main-nav ul li a::after{
+    display: none;
+  }
   .logo {
     
     font-size: 2rem;
