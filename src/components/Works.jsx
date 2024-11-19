@@ -24,14 +24,14 @@ const Works = ({theme} ) => {
           <img src={portifolio} alt="Portfolio" className="project-image w-full h-48 object-cover" />
           <div className="p-4">
             <h3 className="font-bold text-lg text-orange-300">Personal Portfolio</h3>
-            <p className="text-white playpen-sans">I developed Kravinz, a platform that simplifies the food experience for expatriates by providing meal plans and in-home cooking services with culturally familiar ingredients, enhancing their settling-in process.</p>
+            <p className="text-white playpen-sans">A responsive portfolio website showcasing my skills, projects, and experiences.</p>
           </div>
         </div>
         <div className="project-card shadow-lg rounded-lg overflow-hidden opacity-0 transform translate-y-10">
           <img src={kravinz} alt="Portfolio" className="project-image w-full h-48 object-cover" />
           <div className="p-4">
             <h3 className="font-bold text-lg text-orange-300">kravinz</h3>
-            <p className="text-white playpen-sans">A responsive portfolio website showcasing my skills, projects, and experiences.</p>
+            <p className="text-white playpen-sans">I developed Kravinz, a platform that simplifies the food experience for expatriates by providing meal plans and in-home cooking services with culturally familiar ingredients, enhancing their settling-in process.</p>
           </div>
         </div>
 
