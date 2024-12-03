@@ -32,7 +32,7 @@ const Home = ({theme} ) => {
                     
                     
                     <a 
-                        href="resume/Tinbite Elias Resume (1).pdf"
+                        href="resume/tinbite resume (2).pdf"
                         download 
                         className= {`cv mt-12 text-lg zilla-slab-light  inline-block border border:2 border:[#e67e22]bg-transparent bg-opacity-70 ${theme === 'light' ? 'text-gray-800' : 'text-white'} hover:bg-gray-300 hover:text-black  font-bold py-3 px-5  transition duration-300 `}
                     >
