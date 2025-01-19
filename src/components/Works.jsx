@@ -16,7 +16,7 @@ const Works = ({ theme }) => {
   }, []);
 
   return (
-    <div className={`${theme === 'light' ? 'text-gray-800' : 'text-white'} container`}>
+    <div className={`${theme === 'light' ? 'text-gray-800' : 'text-white'} container overflow-hidden`}>
       <h2 className="section-title">My Works</h2>
       <p className="section-subtitle">Current and Upcoming Projects:</p>
       <div className="project-gallery grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
