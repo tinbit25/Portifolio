@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import portifolio from '../assets/images/portifolio.png';
 import pomodoro from '../assets/images/pomodoro.png';
+import pomodoro2 from '../assets/images/pomodoro2.png';
 import church from '../assets/images/orthdox.png';
 import kravinz from '../assets/images/kravinz.png';
 
@@ -45,11 +46,14 @@ const Works = ({ theme }) => {
         </div>
 
         <div className="project-card shadow-lg rounded-lg overflow-hidden opacity-0 transform translate-y-10">
-          <img src={pomodoro} alt="Pomodoro Timer Project" className="project-image w-full h-48 object-cover" />
+          <div className="flex flex-row justify-between space-x-4">
+        <img src={pomodoro} alt="Pomodoro Timer Project" className="project-image h-60 pl-10 object-cover" />
+        <img src={pomodoro2} alt="Pomodoro Timer Project" className="project-image pr-16 h-60 object-cover" />
+        </div>
           <div className="p-4">
             <h3 className="font-bold text-lg text-indigo-600">Pomodoro Timer</h3>
             <p className="text-white playpen-sans text-md leading-relaxed">
-              A fully functional Pomodoro Timer extension to help users manage their time effectively and stay productive.
+              A Pomodoro Timer extension to help users manage their time effectively and stay productive.
             </p>
           </div>
         </div>
