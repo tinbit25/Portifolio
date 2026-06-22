@@ -40,10 +40,10 @@ const projects = [
   {
     title: "ZapFood",
     description:
-      "A native Android mobile application for food ordering and delivery. Implemented fully with Kotlin, featuring real-time order tracking, secure checkouts, and premium UI.",
+      "A next-generation real-time food discovery and flexible ordering platform for the Ethiopian market. Features AI-ready recommendations, QR-based dine-in, live status syncing, and secure Chapa integration.",
     image: zapfood,
     alt: "ZapFood mobile application mockup",
-    tags: ["Kotlin", "Android SDK", "Firebase", "MVVM"],
+    tags: ["Kotlin", "Jetpack Compose", "FastAPI", "Firebase"],
     github: "https://github.com/tinbit25/ZapFood",
     demo: null,
   },
