@@ -1,43 +1,88 @@
-import React, { useEffect } from "react";
-import certificate1 from "../assets/images/www.freecodecamp.org_certification_fcc5dab13ae-6ad2-4b4b-88ad-f617daa98a2a_back-end-development-and-apis.png";
+import React, { useEffect, useRef } from "react";
 
-import certificate3 from "../assets/images/52-professional-foundations-certificate-tinbite-elias.png";
-import certificate4 from "../assets/images/Learn the Latest Tech Skills; Advance Your Career _ Udacity-images-0.jpg"; 
-import certificate2 from "../assets/images/R5iK7HMxJGBgaSbvk_J.P. Morgan_qS9sgsKmRuaLb8t42_1725272498297_completion_certificate (1).jpg";
+import cert1 from "../assets/images/www.freecodecamp.org_certification_fcc5dab13ae-6ad2-4b4b-88ad-f617daa98a2a_back-end-development-and-apis.png";
+import cert2 from "../assets/images/R5iK7HMxJGBgaSbvk_J.P. Morgan_qS9sgsKmRuaLb8t42_1725272498297_completion_certificate (1).jpg";
+import cert3 from "../assets/images/52-professional-foundations-certificate-tinbite-elias.png";
+import cert4 from "../assets/images/Learn the Latest Tech Skills; Advance Your Career _ Udacity-images-0.jpg";
 
+const certificates = [
+  {
+    image: cert1,
+    title: "Back End Development and APIs",
+    issuer: "freeCodeCamp",
+  },
+  {
+    image: cert2,
+    title: "Software Engineering Job Simulation",
+    issuer: "J.P. Morgan",
+  },
+  {
+    image: cert3,
+    title: "Professional Foundations",
+    issuer: "ALX Africa",
+  },
+  {
+    image: cert4,
+    title: "Tech Skills Certificate",
+    issuer: "Udacity",
+  },
+];
 
-const Certificates = ({theme}) => {
+const CertCard = ({ cert, index }) => {
+  const cardRef = useRef(null);
+
   useEffect(() => {
-    const certificates = document.querySelectorAll('.certificate');
-    certificates.forEach((certificate, index) => {
-      setTimeout(() => {
-        certificate.classList.add('show');
-      }, Math.floor(index / 2) * 600 + (index % 2) * 300); 
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    const el = cardRef.current;
+    if (el) observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 
-  
-  const certificateImages = [certificate1, certificate2, certificate3,certificate4];
-
   return (
-    <div className={`${theme === 'light' ? 'text-gray-800' : 'text-white'}  certificate-container `}>
-      <div className="content p-8  ">
-        <h1 className="text-4xl font-bold mb-5 ">Certificates</h1>
-        
-
-
-        <div className="grid-container ">
-          {certificateImages.map((image, index) => (
-            <div className="certificate" key={index}>
-              <img
-                src={image}
-                alt={`Certificate ${index + 1}`}
-              />
-            </div>
-          ))}
-        </div>
+    <div
+      ref={cardRef}
+      className="cert-card"
+      style={{ transitionDelay: `${index * 120}ms` }}
+    >
+      <img
+        src={cert.image}
+        alt={`${cert.title} certificate`}
+        className="cert-img"
+        loading="lazy"
+      />
+      <div className="cert-body">
+        <p className="cert-title">{cert.title}</p>
+        <p className="cert-issuer">{cert.issuer}</p>
       </div>
     </div>
+  );
+};
+
+const Certificates = () => {
+  return (
+    <section className="page-section">
+      <h1 className="section-title">
+        My <span>Certificates</span>
+      </h1>
+      <div className="section-divider" />
+      <p className="section-subtitle">
+        Verified credentials from leading platforms and institutions.
+      </p>
+
+      <div className="cert-grid">
+        {certificates.map((cert, i) => (
+          <CertCard key={cert.title} cert={cert} index={i} />
+        ))}
+      </div>
+    </section>
   );
 };
 

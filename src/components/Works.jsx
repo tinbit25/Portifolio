@@ -1,65 +1,142 @@
-import React, { useEffect } from 'react';
-import portifolio from '../assets/images/portifolio.png';
-import pomodoro from '../assets/images/pomodoro.png';
-import pomodoro2 from '../assets/images/pomodoro2.png';
-import church from '../assets/images/orthdox.png';
-import kravinz from '../assets/images/kravinz.png';
+import React, { useEffect, useRef } from "react";
+import { FiGithub, FiExternalLink } from "react-icons/fi";
 
-const Works = ({ theme }) => {
+import portifolio from "../assets/images/portifolio.png";
+import zapfood    from "../assets/images/zapfood.png";
+import church     from "../assets/images/orthdox.png";
+import kravinz    from "../assets/images/kravinz.png";
+
+const projects = [
+  {
+    title: "Personal Portfolio",
+    description:
+      "A responsive portfolio website showcasing my skills, projects, and experiences. Built with React + Vite and deployed on Vercel.",
+    image: portifolio,
+    alt: "Personal Portfolio screenshot",
+    tags: ["React", "Vite", "Tailwind CSS"],
+    github: "https://github.com/tinbit25/Portifolio",
+    demo: "https://tinbitelias.vercel.app/",
+  },
+  {
+    title: "Kravinz",
+    description:
+      "A platform that simplifies the food experience for expatriates by providing meal plans and in-home cooking services with culturally familiar ingredients.",
+    image: kravinz,
+    alt: "Kravinz platform screenshot",
+    tags: ["React", "Node.js", "MongoDB"],
+    github: "https://github.com/tinbit25/Kravins-Project",
+    demo: "https://charming-starlight-c9b3b6.netlify.app/",
+  },
+  {
+    title: "Sunday Church Website",
+    description:
+      "A website designed for the Sunday church community, providing information on services, sermons, and upcoming events.",
+    image: church,
+    alt: "Sunday Church Website screenshot",
+    tags: ["React", "CSS", "Firebase"],
+    github: "https://github.com/tinbit25/ChurchApp",
+    demo: null,
+  },
+  {
+    title: "ZapFood",
+    description:
+      "A native Android mobile application for food ordering and delivery. Implemented fully with Kotlin, featuring real-time order tracking, secure checkouts, and premium UI.",
+    image: zapfood,
+    alt: "ZapFood mobile application mockup",
+    tags: ["Kotlin", "Android SDK", "Firebase", "MVVM"],
+    github: "https://github.com/tinbit25/ZapFood",
+    demo: null,
+  },
+];
+
+const ProjectCard = ({ project, index }) => {
+  const cardRef = useRef(null);
+
   useEffect(() => {
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach((card, index) => {
-      setTimeout(() => {
-        card.classList.add('show');
-      }, index * 200);
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    const el = cardRef.current;
+    if (el) observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <div className={`${theme === 'light' ? 'text-gray-800' : 'text-white'} container overflow-hidden`}>
-      <h2 className="section-title">My Works</h2>
-      <p className="section-subtitle">Current and Upcoming Projects:</p>
-      <div className="project-gallery grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-
-        <div className="project-card shadow-lg rounded-lg overflow-hidden opacity-0 transform translate-y-10">
-          <img src={portifolio} alt="Portfolio" className="project-image w-full h-48 object-cover" />
-          <div className="p-4">
-            <h3 className="font-bold text-lg text-orange-300">Personal Portfolio</h3>
-            <p className="text-white playpen-sans">A responsive portfolio website showcasing my skills, projects, and experiences.</p>
-          </div>
+    <article
+      ref={cardRef}
+      className="project-card"
+      style={{ transitionDelay: `${index * 100}ms` }}
+    >
+      <div className="project-image-wrap">
+        <img
+          src={project.image}
+          alt={project.alt}
+          className="project-img"
+        />
+        <div className="project-overlay">
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="overlay-btn outline"
+              aria-label={`${project.title} GitHub`}
+            >
+              <FiGithub size={15} />
+              GitHub
+            </a>
+          )}
+          {project.demo && (
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="overlay-btn"
+              aria-label={`${project.title} Live Demo`}
+            >
+              <FiExternalLink size={15} />
+              Live Demo
+            </a>
+          )}
         </div>
-
-        <div className="project-card shadow-lg rounded-lg overflow-hidden opacity-0 transform translate-y-10">
-          <img src={kravinz} alt="Kravinz Project" className="project-image w-full h-48 object-cover" />
-          <div className="p-4">
-            <h3 className="font-bold text-lg text-orange-300">Kravinz</h3>
-            <p className="text-white playpen-sans">I developed Kravinz, a platform that simplifies the food experience for expatriates by providing meal plans and in-home cooking services with culturally familiar ingredients, enhancing their settling-in process.</p>
-          </div>
-        </div>
-
-        <div className="project-card shadow-lg rounded-lg overflow-hidden opacity-0 transform translate-y-10">
-          <img src={church} alt="Sunday Church Website" className="project-image w-full h-48 object-cover" />
-          <div className="p-4">
-            <h3 className="font-bold text-lg text-orange-500">Sunday Church Website</h3>
-            <p className="text-white playpen-sans">Coming Soon: A website designed for the Sunday church, providing information on services and events.</p>
-          </div>
-        </div>
-
-        <div className="project-card shadow-lg rounded-lg overflow-hidden opacity-0 transform translate-y-10">
-          <div className="flex flex-row justify-between space-x-4">
-        <img src={pomodoro} alt="Pomodoro Timer Project" className="project-image h-60 pl-10 object-cover" />
-        <img src={pomodoro2} alt="Pomodoro Timer Project" className="project-image pr-16 h-60 object-cover" />
-        </div>
-          <div className="p-4">
-            <h3 className="font-bold text-lg text-indigo-600">Pomodoro Timer</h3>
-            <p className="text-white playpen-sans text-md leading-relaxed">
-              A Pomodoro Timer extension to help users manage their time effectively and stay productive.
-            </p>
-          </div>
-        </div>
-
       </div>
-    </div>
+
+      <div className="project-body">
+        <h3 className="project-title">{project.title}</h3>
+        <p className="project-desc">{project.description}</p>
+        <div className="project-tags">
+          {project.tags.map((tag) => (
+            <span key={tag} className="tag">{tag}</span>
+          ))}
+        </div>
+      </div>
+    </article>
+  );
+};
+
+const Works = () => {
+  return (
+    <section className="page-section">
+      <h1 className="section-title">
+        My <span>Works</span>
+      </h1>
+      <div className="section-divider" />
+      <p className="section-subtitle">
+        A selection of projects I&apos;ve built — hover to see links.
+      </p>
+
+      <div className="projects-grid">
+        {projects.map((project, i) => (
+          <ProjectCard key={project.title} project={project} index={i} />
+        ))}
+      </div>
+    </section>
   );
 };
 

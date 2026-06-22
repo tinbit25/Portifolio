@@ -1,128 +1,180 @@
-import React, { useState, useEffect } from 'react';
-import { FaLinkedin, FaInstagram, FaGithub, FaTelegram } from 'react-icons/fa';
+import React, { useState, useEffect } from "react";
+import { FaLinkedin, FaInstagram, FaGithub, FaTelegram } from "react-icons/fa";
+import { FiSend } from "react-icons/fi";
 
-const Contact = ({theme} ) => {
+const socialLinks = [
+  {
+    href: "https://www.linkedin.com/in/tinbite-elias",
+    icon: <FaLinkedin size={18} />,
+    label: "LinkedIn",
+  },
+  {
+    href: "https://github.com/Tinbit25",
+    icon: <FaGithub size={18} />,
+    label: "GitHub",
+  },
+  {
+    href: "https://www.instagram.com/tinbite_elias",
+    icon: <FaInstagram size={18} />,
+    label: "Instagram",
+  },
+  {
+    href: "https://t.me/MTinasT",
+    icon: <FaTelegram size={18} />,
+    label: "Telegram",
+  },
+];
+
+const Contact = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage]   = useState("");
+  const [isVisible, setIsVisible]         = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
-  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    setIsVisible(true);
+    const timer = setTimeout(() => setIsVisible(true), 80);
+    return () => clearTimeout(timer);
   }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const response = await fetch("https://formspree.io/f/xovaodnn", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    const response = await fetch('https://formspree.io/f/xovaodnn', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      setFormSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
-      setErrorMessage('');
-    } else {
-      setErrorMessage('Submission failed. Please try again later.');
+      if (response.ok) {
+        setFormSubmitted(true);
+        setFormData({ name: "", email: "", message: "" });
+        setErrorMessage("");
+      } else {
+        setErrorMessage("Submission failed. Please try again later.");
+      }
+    } catch {
+      setErrorMessage("Network error. Please check your connection.");
     }
   };
 
   return (
-    <div className={`${theme === 'light' ? 'text-gray-800' : 'text-white'} contact-page  min-h-screen flex flex-col items-center p-5 md:p-10`}>
-      <div className="slide">
-      <h1 className="text-4xl md:text-5xl font-bold mb-6 mt-12 text-center">Let's Connect!</h1>
-      <p className="text-lg mb-12 text-center max-w-md">
-        I'm always excited to discuss new projects or opportunities. Feel free to reach out through any of the channels below or use the contact form.
-      </p>
-      </div>
-      <div className={`contact-form rounded-lg shadow-lg w-full max-w-3xl ${isVisible ? 'slide-in' : ''}`}>
-        {formSubmitted ? (
-          <div className="text-center bg-orange-200 py-4 rounded-lg text-black">
-            <h2 className="text-3xl mb-4 ">Thank you for reaching out!</h2>
-            <p className="text-lg">I'll get back to you as soon as possible.</p>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-4 p-5">
-            {errorMessage && <p className="text-red-500 text-center">{errorMessage}</p>}
-            <div className="flex flex-col md:flex-row space-x-4"> 
-              <div className="flex-1">
-                <label className="text-lg font-semibold">Name</label>
-                <input 
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Your name"
-                  className="ml-5 p-3 rounded-full border border-gray-700 focus:ring-2 focus:ring-blue-500 w-full" 
-                  required
-                />
-              </div>
-              <div className="flex-1">
-                <label className="text-lg font-semibold">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Your email"
-                  className="p-3 rounded-full border border-gray-700 focus:ring-2 focus:ring-blue-500 w-full" 
-                  required
-                />
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <label className="text-lg font-semibold">Message</label>
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Your message"
-                className="p-3 rounded-xl border border-gray-700 focus:ring-2 focus:ring-blue-500 h-32"
-                required
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full bg-gray-500 text-white p-3 rounded-xl text-lg hover:bg-gray-700 transition duration-300"
-            >
-              Send Message
-            </button>
-          </form>
-        )}
-      </div>
+    <section className="page-section">
+      <h1 className="section-title">
+        Let&apos;s <span>Connect</span>
+      </h1>
+      <div className="section-divider" />
 
-      <div className="flex flex-wrap justify-center mt-10 space-x-6 space-y-4 md:space-y-0">
-        <a href="https://www.linkedin.com/in/tinbite-elias" target="_blank" rel="noopener noreferrer" className="text-3xl mt-4 md:text-4xl md:mt-0 hover:text-blue-500 transition duration-300">
-          <FaLinkedin />
-        </a>
-        <a href="https://github.com/Tinbit25" target="_blank" rel="noopener noreferrer" className="text-3xl md:text-4xl hover:text-gray-500 transition duration-300">
-          <FaGithub />
-        </a>
-        <a href="https://www.instagram.com/tinbite_elias" target="_blank" rel="noopener noreferrer" className="text-3xl md:text-4xl hover:text-pink-300 transition duration-300">
-          <FaInstagram />
-        </a>
-        <a href="https://t.me/MTinasT" className="text-3xl md:text-4xl hover:text-blue-500 transition duration-300">
-          <FaTelegram />
-        </a>
+      <div className="contact-layout">
+        <p className="contact-intro">
+          I&apos;m always excited to discuss new projects or opportunities.
+          Feel free to reach out through the form below or any of the channels
+          listed.
+        </p>
+
+        {/* ── Contact Form ── */}
+        <div className={`contact-form-card ${isVisible ? "slide-in" : ""}`}>
+          {formSubmitted ? (
+            <div className="success-card">
+              <h2>Thank you! 🎉</h2>
+              <p style={{ color: "var(--text-secondary)" }}>
+                I&apos;ll get back to you as soon as possible.
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} noValidate>
+              {errorMessage && (
+                <p className="error-msg">{errorMessage}</p>
+              )}
+
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="contact-name" className="form-label">
+                    Name
+                  </label>
+                  <input
+                    id="contact-name"
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your name"
+                    className="form-input"
+                    required
+                    autoComplete="name"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="contact-email" className="form-label">
+                    Email
+                  </label>
+                  <input
+                    id="contact-email"
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="your@email.com"
+                    className="form-input"
+                    required
+                    autoComplete="email"
+                  />
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="contact-message" className="form-label">
+                  Message
+                </label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="What would you like to talk about?"
+                  className="form-textarea"
+                  required
+                />
+              </div>
+
+              <button type="submit" className="btn-submit">
+                <FiSend size={16} style={{ marginRight: "0.5rem" }} />
+                Send Message
+              </button>
+            </form>
+          )}
+        </div>
+
+        {/* ── Social Links ── */}
+        <div className="contact-socials">
+          {socialLinks.map(({ href, icon, label }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-social-link"
+              aria-label={label}
+            >
+              {icon}
+              {label}
+            </a>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

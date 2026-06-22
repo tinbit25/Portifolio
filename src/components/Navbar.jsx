@@ -1,47 +1,113 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faUser, faBriefcase, faCertificate, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import {
+  FiHome,
+  FiUser,
+  FiBriefcase,
+  FiAward,
+  FiMail,
+  FiSun,
+  FiMoon,
+  FiMenu,
+  FiX,
+} from "react-icons/fi";
 
-const Navbar = () => {
+const navItems = [
+  { to: "/",             label: "Home",         icon: <FiHome /> },
+  { to: "/about",        label: "About",        icon: <FiUser /> },
+  { to: "/works",        label: "Works",        icon: <FiBriefcase /> },
+  { to: "/certificates", label: "Certificates", icon: <FiAward /> },
+  { to: "/contact",      label: "Contact",      icon: <FiMail /> },
+];
+
+const Navbar = ({ theme, toggleTheme }) => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const closeMobile = () => setMobileOpen(false);
+
   return (
-    <nav className="nwidth h-full flex flex-col justify-between items-center p-4">
-      {/* Logo */}
-      <div className="logo"> 
-        <Link to="/" className="hidden md:block text-5xl satisfy-regular font-logo">Tinbite</Link>
-      </div>
+    <>
+      {/* ── Desktop Sidebar ── */}
+      <aside className="sidebar">
+        <NavLink to="/" className="sidebar-logo">
+          Tinbite
+        </NavLink>
 
-      {/* Main Navigation */}
-      <div className="main-nav">
-        <ul className="mt-12 flex flex-row justify-between items-center md:flex-col">
-          <li>
-            <Link to="/" className="nav-link flex items-center ml-4">
-              <FontAwesomeIcon icon={faHome} className="mr-2 hidden md:block" /> Home
-            </Link>
-          </li>
-          <li>
-            <Link to="/about" className="nav-link flex items-center">
-              <FontAwesomeIcon icon={faUser} className="mr-2 hidden md:block" /> About
-            </Link>
-          </li>
-          <li>
-            <Link to="/works" className="nav-link flex items-center">
-              <FontAwesomeIcon icon={faBriefcase} className="mr-2 hidden md:block" /> Works
-            </Link>
-          </li>
-          <li>
-            <Link to="/certificates" className="nav-link md:ml-8 flex items-center">
-              <FontAwesomeIcon icon={faCertificate} className="mr-2 hidden md:block" /> Certificates
-            </Link>
-          </li>
-          <li>
-            <Link to="/contact" className="nav-link flex md:ml-3 items-center">
-              <FontAwesomeIcon icon={faEnvelope} className="mr-2 hidden md:block" /> Contact
-            </Link>
-          </li>
+        <ul className="nav-list">
+          {navItems.map(({ to, label, icon }) => (
+            <li key={to} className="nav-item">
+              <NavLink
+                to={to}
+                end={to === "/"}
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                <span className="nav-icon">{icon}</span>
+                {label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
-      </div>
-    </nav>
+
+        <button
+          onClick={toggleTheme}
+          className="theme-toggle"
+          aria-label={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
+        >
+          {theme === "dark" ? <FiSun size={16} /> : <FiMoon size={16} />}
+          {theme === "dark" ? "Light Mode" : "Dark Mode"}
+        </button>
+      </aside>
+
+      {/* ── Mobile Header ── */}
+      <header className="mobile-header">
+        <span className="mobile-logo">Tinbite</span>
+        <div style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
+          <button
+            onClick={toggleTheme}
+            className="hamburger-btn"
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? <FiSun size={20} /> : <FiMoon size={20} />}
+          </button>
+          <button
+            onClick={() => setMobileOpen((o) => !o)}
+            className="hamburger-btn"
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <FiX size={22} /> : <FiMenu size={22} />}
+          </button>
+        </div>
+      </header>
+
+      {/* ── Mobile Dropdown Nav ── */}
+      <nav className={`mobile-nav ${mobileOpen ? "open" : ""}`}>
+        {navItems.map(({ to, label, icon }) => (
+          <NavLink
+            key={to}
+            to={to}
+            end={to === "/"}
+            onClick={closeMobile}
+            className={({ isActive }) =>
+              `nav-item-mobile ${isActive ? "active" : ""}`
+            }
+            style={({ isActive }) => ({
+              display: "flex",
+              alignItems: "center",
+              gap: "0.75rem",
+              padding: "0.7rem 1rem",
+              borderRadius: "6px",
+              fontWeight: 500,
+              color: isActive ? "var(--accent)" : "var(--text-secondary)",
+              backgroundColor: isActive ? "var(--bg-card)" : "transparent",
+              transition: "all 0.2s ease",
+            })}
+          >
+            <span>{icon}</span>
+            {label}
+          </NavLink>
+        ))}
+      </nav>
+    </>
   );
 };
 
