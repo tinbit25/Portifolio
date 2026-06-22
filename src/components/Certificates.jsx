@@ -1,11 +1,17 @@
 import React, { useEffect, useRef } from "react";
 
+import cert0 from "../assets/images/alx_backend_certificate.png";
 import cert1 from "../assets/images/www.freecodecamp.org_certification_fcc5dab13ae-6ad2-4b4b-88ad-f617daa98a2a_back-end-development-and-apis.png";
 import cert2 from "../assets/images/R5iK7HMxJGBgaSbvk_J.P. Morgan_qS9sgsKmRuaLb8t42_1725272498297_completion_certificate (1).jpg";
 import cert3 from "../assets/images/52-professional-foundations-certificate-tinbite-elias.png";
 import cert4 from "../assets/images/Learn the Latest Tech Skills; Advance Your Career _ Udacity-images-0.jpg";
 
 const certificates = [
+  {
+    image: cert0,
+    title: "Software Engineering — Back-End Web Development",
+    issuer: "ALX Software Engineering",
+  },
   {
     image: cert1,
     title: "Back End Development and APIs",
