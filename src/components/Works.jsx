@@ -16,6 +16,18 @@ const projects = [
     tags: ["React", "Vite", "Tailwind CSS"],
     github: "https://github.com/tinbit25/Portifolio",
     demo: "https://tinbitelias.vercel.app/",
+    demoText: "Live Demo",
+  },
+  {
+    title: "ZapFood",
+    description:
+      "A next-generation real-time food discovery and flexible ordering platform for the Ethiopian market. Features AI-ready recommendations, QR-based dine-in, live status syncing, and secure Chapa integration.",
+    image: zapfood,
+    alt: "ZapFood mobile application screenshot",
+    tags: ["Kotlin", "Jetpack Compose", "FastAPI", "Firebase"],
+    github: "https://github.com/tinbit25/ZapFood",
+    demo: "https://github.com/tinbit25/ZapFood/releases",
+    demoText: "Download App",
   },
   {
     title: "Kravinz",
@@ -26,6 +38,7 @@ const projects = [
     tags: ["React", "Node.js", "MongoDB"],
     github: "https://github.com/tinbit25/Kravins-Project",
     demo: "https://charming-starlight-c9b3b6.netlify.app/",
+    demoText: "Live Demo",
   },
   {
     title: "Sunday Church Website",
@@ -35,16 +48,6 @@ const projects = [
     alt: "Sunday Church Website screenshot",
     tags: ["React", "CSS", "Firebase"],
     github: "https://github.com/tinbit25/ChurchApp",
-    demo: null,
-  },
-  {
-    title: "ZapFood",
-    description:
-      "A next-generation real-time food discovery and flexible ordering platform for the Ethiopian market. Features AI-ready recommendations, QR-based dine-in, live status syncing, and secure Chapa integration.",
-    image: zapfood,
-    alt: "ZapFood mobile application mockup",
-    tags: ["Kotlin", "Jetpack Compose", "FastAPI", "Firebase"],
-    github: "https://github.com/tinbit25/ZapFood",
     demo: null,
   },
 ];
@@ -98,10 +101,10 @@ const ProjectCard = ({ project, index }) => {
               target="_blank"
               rel="noopener noreferrer"
               className="overlay-btn"
-              aria-label={`${project.title} Live Demo`}
+              aria-label={`${project.title} ${project.demoText || "Live Demo"}`}
             >
               <FiExternalLink size={15} />
-              Live Demo
+              {project.demoText || "Live Demo"}
             </a>
           )}
         </div>
